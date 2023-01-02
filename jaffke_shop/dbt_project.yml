@@ -33,11 +33,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   jaffle_shop:
-    # By setting persist docs option, we are able to use column and table descriptions and labels
-    +persist_docs:
-      relation: true
-      columns: true
-    # Applies to all files under models/example/
+    # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
-      +schema: jaffle_shop
