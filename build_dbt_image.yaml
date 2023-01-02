@@ -1,21 +1,22 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}', '.']
+  args: ['build', '-t', '${_LOCATION2}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}', '.']
 
 - id: 'dbt-run'
-  name: '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}:latest'
+  name: '${_LOCATION2}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}:latest'
   entrypoint: 'sh'
   secretEnv: ['DBT_SA']
-  env: ['PROJECT_ID=$PROJECT_ID', 'LOCATION=$_LOCATION']
+  env: ['PROJECT_ID=$PROJECT_ID', 'LOCATION=$_LOCATION', 'BUCKET_NAME=$PROJECT_ID-dbt']
   args: ['./dbt_cd.sh']
 
 images:
-  - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}'
+  - '${_LOCATION2}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE_NAME}'
 
 substitutions:
   _IMAGE_NAME: 'dbt'
   _REPOSITORY: 'docker'
-  _LOCATION: 'us-central1'
+  _LOCATION: 'US'
+  _LOCATION2: 'us-central1'
 
 availableSecrets:
   secretManager:
