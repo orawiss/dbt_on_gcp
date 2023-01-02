@@ -1,1 +1,2 @@
-# dbt_on_gcp
+### Description
+Running dbt on Google Cloud Platform
