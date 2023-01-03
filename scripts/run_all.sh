@@ -7,7 +7,7 @@ export PROJECT_NR=147995594777
 export SA_KEY_FILE="/tmp/dbt_sa.json"
 export BUILD_CONFIG_FILE="build_dbt_image.yaml"
 export REPO_NAME="dbt_on_gcp"
-export REPO_OWNER="StanislawSmyl"
+export REPO_OWNER="orawiss"
 
 # Initialize dbt environment
 dbt init jaffle_shop
